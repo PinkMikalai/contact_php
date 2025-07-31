@@ -18,11 +18,11 @@
             </div>
             <div>
                 <label for="age">Age :</label>
-                <input type="text" id="age" name="Age">
+                <input type="number" id="age" name="Age">
             </div>
             <div>
                 <label for="city">Ville :</label>
-                <input type="city" id="city" name="Ville">
+                <input type="text" id="city" name="Ville">
             </div>
             <div>
                 <input type="submit" value="envoyer">
@@ -30,7 +30,8 @@
         </form>
     </main>
     <?php include "../includes/footer.html" ;?>
-    <?php include "../assets/php/t-f.php" ;?>
+    <!-- traitement de formulaire etc sur t-f.php -->
+    <?php include "../assets/php/t-f.php" ;?> 
 </body>
 </html>
 <?php
