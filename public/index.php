@@ -1,4 +1,24 @@
 <?php
+session_start();
+
+$newUser = null; // Initialisation pour éviter erreur si formulaire vide
+$erreurs [];
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nom = $_POST["nom"] ?? '';
+    $age = $_POST["age"] ?? '';
+    $city = $_POST["city"] ?? '';
+
+    if (!empty($nom) && !empty($age) && !empty($city)) {
+        $newUser = [
+            "nom" => $nom,
+            "age" => $age,
+            "city" => $city
+        ];
+        $_SESSION['user'] = $newUser; // on fait une session user
+        var_dump($newUser); // affichage test
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -9,30 +29,28 @@
     <title>Index php</title>
 </head>
 <body>
-    <?php include "../includes/header.html" ;?>
+    <?php include "../includes/header.html"; ?>
+    
     <main>
-        <form action="../assets/php/t-f.php" method = "POST">
+        <form action="" method="POST">
             <div>
-                <label for="name">Name :</label>
-                <input type="text" id="name" name="Name">
+                <label for="name">Nom :</label>
+                <input type="text" id="name" name="nom">
             </div>
             <div>
-                <label for="age">Age :</label>
-                <input type="number" id="age" name="Age">
+                <label for="age">Âge :</label>
+                <input type="number" id="age" name="age">
             </div>
             <div>
                 <label for="city">Ville :</label>
-                <input type="text" id="city" name="Ville">
+                <input type="text" id="city" name="city">
             </div>
             <div>
-                <input type="submit" value="envoyer">
+                <input type="submit" value="Envoyer">
             </div>
         </form>
     </main>
-    <?php include "../includes/footer.html" ;?>
-    <!-- traitement de formulaire etc sur t-f.php -->
-    <?php include "../assets/php/t-f.php" ;?> 
+
+    <?php include "../includes/footer.html"; ?>
 </body>
 </html>
-<?php
-?>

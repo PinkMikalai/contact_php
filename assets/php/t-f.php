@@ -13,5 +13,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         "city" => $city
       ];
 
+      $_SESSION['user'] = $newUser;
+      var_dump($newUser);
     }
 };
+?>
