@@ -15,7 +15,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             "age" => $age,
             "city" => $city
         ];
-        $_SESSION['user'] = $newUser; // on fait une session user apres avoir envoyee la formulaire par POST
         var_dump($newUser); // affichage test avec nos cordonnes
     }
     if (empty($nom)){
@@ -30,6 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $erreurs[] = "ta pas ta ville";
         var_dump($erreurs);
     }
+    $_SESSION['user'] = $newUser; // on fait une session user apres avoir envoyee la formulaire par POST
 }
 ?>
 
@@ -62,7 +62,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </form>
     </main>
-
     <?php include "../includes/footer.html"; ?>
 </body>
 </html>
