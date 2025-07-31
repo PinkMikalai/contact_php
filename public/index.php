@@ -2,7 +2,7 @@
 session_start();
 
 $newUser = null; // Initialisation pour éviter erreur si formulaire vide
-$erreurs [];
+$erreurs = [];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nom = $_POST["nom"] ?? '';
@@ -15,8 +15,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             "age" => $age,
             "city" => $city
         ];
-        $_SESSION['user'] = $newUser; // on fait une session user
-        var_dump($newUser); // affichage test
+        $_SESSION['user'] = $newUser; // on fait une session user apres avoir envoyee la formulaire par POST
+        var_dump($newUser); // affichage test avec nos cordonnes
+    }
+    if (empty($nom)){
+        $erreurs[] = "ta pas ton nom";
+        var_dump($erreurs);
+    }
+    if (empty($age)){
+        $erreurs[] = "ta pas ton age";
+        var_dump($erreurs);
+    }
+    if (empty($city)){
+        $erreurs[] = "ta pas ta ville";
+        var_dump($erreurs);
     }
 }
 ?>
