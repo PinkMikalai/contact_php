@@ -25,19 +25,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     /////des erreurs si le formulaire est vide
     if (empty($nom)){
-        $erreurs[] = "ta pas ton nom";
+        $erreurs[] = "ta pas mit ton nom";
         var_dump($erreurs);
     }
     if (empty($age)){
-        $erreurs[] = "ta pas ton age";
+        $erreurs[] = "ta pas mit ton age";
         var_dump($erreurs);
     }
     if (empty($city)){
-        $erreurs[] = "ta pas ta ville";
+        $erreurs[] = "ta pas mit ta ville";
         var_dump($erreurs);
     }
 }
-$users = $_SESSION['users']; ///une varible qui rcupere les infos de lasession et l information envoyee par le newUser
+$users = $_SESSION['users']; ///une varible qui rcupere les infos de la session et l information envoyee par le newUser (formulaire)
 ?>
 
 <!DOCTYPE html>
@@ -69,10 +69,12 @@ $users = $_SESSION['users']; ///une varible qui rcupere les infos de lasession e
             </div>
         </form>
         <section>
+            <!-- ici je met m information de ma session -->
             <h2>Ici mon message recuee</h2>
             <article>
                 <?php 
                     if(!empty($users)) {
+                        // ici je affiche les informations de mes formulaires recuee
                         foreach ($users as $user) {
                             echo "
                             <article>
