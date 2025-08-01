@@ -1,7 +1,7 @@
 <?php
 session_start();
-
-$newUser = []; // Initialisation pour éviter erreur si formulaire vide
+session_destroy();
+$newUser = []; 
 $erreurs = [];
 
 if (!isset($_SESSION["users"])) {
@@ -20,7 +20,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             "age" => $age,
             "city" => $city
         ];
+        $_SESSION['users'][] = $newUser; ////sesion recupere les infos de notre formulaire qui se trouvent dans la varible
     }
+    /////des erreurs si le formulaire est vide
     if (empty($nom)){
         $erreurs[] = "ta pas ton nom";
         var_dump($erreurs);
@@ -33,9 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $erreurs[] = "ta pas ta ville";
         var_dump($erreurs);
     }
-    $_SESSION['user'][] = $newUser;
-    $users = $_SESSION['user'];
 }
+$users = $_SESSION['users']; ///une varible qui rcupere les infos de lasession et l information envoyee par le newUser
 ?>
 
 <!DOCTYPE html>
