@@ -4,6 +4,7 @@ session_start();
 $newUser = []; 
 $erreurs = [];
 
+///si il n ya pas de sessions existante on fit une avec tableau
 if (!isset($_SESSION["users"])) {
        $_SESSION["users"] = [];
     }
