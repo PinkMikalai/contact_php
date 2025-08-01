@@ -9,11 +9,10 @@ if (!isset($_SESSION["users"])) {
        $_SESSION["users"] = [];
     }
 
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nom = htmlspecialchars($_POST["nom"] )?? '';
-    $age = htmlspecialchars($_POST["age"]) ?? '';
-    $city = htmlspecialchars($_POST["city"])?? '';
+    $nom = htmlspecialchars(trim($_POST["nom"] ))?? '';
+    $age = htmlspecialchars(trim($_POST["age"])) ?? '';
+    $city = htmlspecialchars(trim($_POST["city"]))?? '';
 
     if (!empty($nom) && !empty($age) && !empty($city)) {
         $newUser = [
