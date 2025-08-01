@@ -1,6 +1,6 @@
 <?php
 session_start();
-session_destroy();
+// session_destroy();
 $newUser = []; 
 $erreurs = [];
 
@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $city = htmlspecialchars($_POST["city"])?? '';
 
     if (!empty($nom) && !empty($age) && !empty($city)) {
-        $newUser[] = [
+        $newUser = [
             "nom" => $nom,
             "age" => $age,
             "city" => $city
@@ -71,19 +71,16 @@ $users = $_SESSION['users']; ///une varible qui rcupere les infos de lasession e
             <h2>Ici mon message recuee</h2>
             <article>
                 <?php 
-                    if(!empty($newUser)) {
+                    if(!empty($users)) {
                         foreach ($users as $user) {
                             echo "
                             <article>
-                                <h3>$user[nom]</h3>
-                                <span>l'age est: $user[age]</span>
-                                <p>
-                                    $user[city]
-                                </p>
+                                <h3>{$user['nom']}</h3>
+                                <span>l'age est: {$user['age']}</span>
+                                <p>{$user['city']}</p>
                             </article>
                             ";
                         }
-                        
                     }else{
                         echo "
                             <p>
